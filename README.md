@@ -1,53 +1,84 @@
-![XD — Robotics and 3D Perception](assets/banner.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/hero-light.svg">
+  <img alt="不吃香菜 · 机器人、三维感知与自主导航" src="assets/hero-light.svg" width="100%">
+</picture>
 
 <div align="center">
 
-**机器人 · 三维感知 · 自主导航**
+### 机器人 · 三维感知 · 自主导航
 
-从传感器数据到地图，从地图到行动。
+把传感器观测转化为地图，让地图支持可靠的行动。
 
-[![GitHub](https://img.shields.io/badge/GitHub-xindongle8864-0F172A?style=flat-square&logo=github)](https://github.com/xindongle8864)
-![ROS 2](https://img.shields.io/badge/ROS_2-22314E?style=flat-square&logo=ros)
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
-![C++](https://img.shields.io/badge/C%2B%2B-00599C?style=flat-square&logo=cplusplus&logoColor=white)
-![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black)
+[关于我](#关于我) · [项目实践](#项目实践) · [技术与方法](#技术与方法) · [公开内容](#公开内容)
 
 </div>
 
 ## 关于我
 
-我是 **XD**，关注机器人建图、三维点云处理与自主导航，喜欢把算法、传感器接口、运行工具和验证流程连接成可实际使用的工程。
+你好，我是 **不吃香菜**。我的工作重点是四足机器人的建图、定位与导航，也关注三维点云处理和视觉任务。
 
-近期工作围绕四足机器人：处理真实输入和时间一致性，构建可恢复的建图链路，研究三维轨迹纠漂，并将操作、诊断与文档一起完善。
+我喜欢沿着真实的数据链路解决问题：从传感器接口、坐标系与时间一致性，到地图构建、任务执行，再到异常恢复和结果验证。算法之外，配置、运行工具与操作文档也是项目的一部分。
 
-## 项目方向
+## 项目实践
 
-| 项目 | 关注的问题 | 工程内容 |
-| --- | --- | --- |
-| **RoboTac / MATRiX** | 比赛任务的感知与执行 | 三维建图、多目标导航、视觉搜靶、独立地图训练与离线操作工具 |
-| **Go2 · L2 Mapping** | 原生雷达建图与轨迹一致性 | 地图保存、会话恢复、6DoF GICP + SE3后处理、AMCL导航与验证分析 |
-| **三维点云** | 空间数据的表示与理解 | 点云处理、重建与质量分析 |
+<table>
+<tr>
+<td width="50%" valign="top">
 
-RoboTac 与 Go2 项目保存在私有仓库；此页仅展示方向和工程概览。
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/robotac-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/robotac-light.svg">
+  <img alt="RoboTac / MATRiX — 比赛任务工程" src="assets/robotac-light.svg" width="100%">
+</picture>
 
-## 我关心的工程问题
+<strong>比赛任务的感知与执行</strong>
+<p>围绕三维建图、多目标导航和视觉搜靶，整理完整的任务入口、地图训练、状态检查与离线操作流程。</p>
+<p><code>ROS 2</code> <code>LIO</code> <code>Planning</code> <code>AprilTag</code></p>
 
-- **数据可信**：认真处理坐标系、源时间、外参与输入异常。
-- **结果可核验**：区分合成实验、数据回放、仿真和实机验证，记录适用边界。
-- **过程可恢复**：保留原始数据，明确失败状态，提供诊断与恢复入口。
-- **工具可使用**：让配置、操作界面、文档与实际运行行为保持一致。
+</td>
+<td width="50%" valign="top">
 
-## 技术视角
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/go2-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/go2-light.svg">
+  <img alt="Go2 / L2 Mapping — 建图与三维轨迹一致性" src="assets/go2-light.svg" width="100%">
+</picture>
 
-```mermaid
-flowchart LR
-    A[传感器与真实输入] --> B[感知与三维建图]
-    B --> C[定位与规划]
-    C --> D[任务执行]
-    D --> E[记录与验证]
-    E --> B
-```
+<strong>原生雷达建图与三维纠漂</strong>
+<p>围绕地图保存、会话恢复、GICP 回访约束、SE3 位姿图与 AMCL 导航，关注数据完整性和轨迹一致性。</p>
+<p><code>Point Cloud</code> <code>GICP</code> <code>SE3</code> <code>AMCL</code></p>
+
+</td>
+</tr>
+</table>
+
+<sub>以上工程保存在私有仓库；这里展示项目方向与方法概览。</sub>
+
+## 技术与方法
+
+| 层次 | 主要内容 |
+| :--- | :--- |
+| **感知与空间数据** | 点云处理、坐标变换、源时间检查、AprilTag 与几何视觉 |
+| **建图与定位** | SLAM、GICP 配准、SE3 位姿图、地图质量分析、AMCL |
+| **规划与执行** | 多目标路线、可通行检查、动态障碍处理、任务状态与恢复 |
+| **开发与交付** | Python、C++、ROS 2、Linux、Git、离线工具与技术文档 |
+
+### 最近在关注
+
+- **重访后的地图一致性**：三维约束怎样修正轨迹，以及何时应拒绝修正。
+- **建图过程的可恢复性**：输入异常或保存中断后，怎样保留原料并恢复结果。
+- **验证与真实效果的距离**：分别记录合成试验、数据回放、仿真与实机结果。
+
+## 公开内容
+
+[**CMC-SpeedRun · 全国大学生数学竞赛速通教程**](https://github.com/xindongle8864/CMC-SpeedRun)
+
+收藏的开源学习项目（Fork），用于数学竞赛学习。机器人项目的源码、录包和运行记录继续保留在私有仓库。
+
+---
 
 <div align="center">
-<sub>Robotics · Spatial Computing · Practical Engineering</sub>
+<sub>Observe carefully. Build practically. Validate honestly.</sub><br>
+<sub>不吃香菜 · Robotics &amp; 3D Perception</sub>
 </div>
